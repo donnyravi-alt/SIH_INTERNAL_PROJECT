@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FeedCheck - Smart Questions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-tint": "#3b6934",
+                            "tertiary-fixed": "#e4e4cc",
+                            "surface-dim": "#dcd9d9",
+                            "secondary": "#006e1c",
+                            "error-container": "#ffdad6",
+                            "secondary-container": "#91f78e",
+                            "surface-container-high": "#eae7e7",
+                            "tertiary-fixed-dim": "#c8c8b0",
+                            "surface-container-highest": "#e5e2e1",
+                            "primary-fixed": "#bcf0ae",
+                            "tertiary": "#393a29",
+                            "on-tertiary": "#ffffff",
+                            "on-primary-fixed": "#002201",
+                            "outline-variant": "#c2c9bb",
+                            "surface": "#fcf9f8",
+                            "outline": "#72796e",
+                            "on-error": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            "on-secondary-fixed": "#002204",
+                            "on-primary": "#ffffff",
+                            "surface-bright": "#fcf9f8",
+                            "inverse-on-surface": "#f3f0ef",
+                            "primary": "#154212",
+                            "inverse-surface": "#313030",
+                            "primary-fixed-dim": "#a1d494",
+                            "on-error-container": "#93000a",
+                            "on-surface": "#1b1b1b",
+                            "secondary-fixed-dim": "#78dc77",
+                            "on-tertiary-fixed-variant": "#474836",
+                            "on-secondary-fixed-variant": "#005313",
+                            "surface-container-low": "#f6f3f2",
+                            "surface-variant": "#e5e2e1",
+                            "on-surface-variant": "#42493e",
+                            "secondary-fixed": "#94f990",
+                            "on-primary-container": "#9dd090",
+                            "primary-container": "#2d5a27",
+                            "inverse-primary": "#a1d494",
+                            "error": "#ba1a1a",
+                            "tertiary-container": "#50513f",
+                            "background": "#fcf9f8",
+                            "surface-container": "#f0eded",
+                            "on-tertiary-fixed": "#1b1d0e",
+                            "on-tertiary-container": "#c3c4ac",
+                            "on-background": "#1b1b1b",
+                            "on-primary-fixed-variant": "#23501e",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-container": "#00731e"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "touch-target-min": "56px",
+                            "gutter-md": "16px",
+                            "unit": "8px",
+                            "container-padding-desktop": "32px",
+                            "stack-gap": "12px",
+                            "container-padding-mobile": "16px",
+                            "large-btn": "80px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["Inter"],
+                            "body-md": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "body-lg-mobile": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                            "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                            "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                            "body-lg-mobile": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F5F5DC; } /* Fallback Sand color */
+        
+        .option-card.selected {
+            border-color: #154212; /* primary */
+            border-width: 2px;
+            background-color: #f0eded; /* surface-container */
+        }
+        
+        .option-card.selected .check-icon {
+            opacity: 1;
+        }
+        
+        .option-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-full flex flex-col pt-[56px] pb-[72px] md:pb-0 md:pl-64">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-touch-target-min bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline md:pl-64 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="agriculture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">FeedCheck</span>
+</div>
+<div>
+<button class="font-label-lg text-label-lg text-primary dark:text-primary-fixed hover:bg-surface-container dark:hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors">
+                EN/TEL
+            </button>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container dark:bg-surface-container-high border-r border-outline-variant dark:border-outline w-64 pt-[56px]">
+<div class="px-6 py-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Cooperative Admin</h2>
+</div>
+<div class="flex flex-col flex-1 overflow-y-auto">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-primary dark:text-primary-fixed font-bold border-r-4 border-primary dark:border-primary-fixed py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-opacity opacity-80 bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-lg text-label-lg">Check Feed</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg">Farmers</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-lg text-label-lg">Alerts</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 p-container-padding-mobile md:p-container-padding-desktop flex justify-center">
+<div class="w-full max-w-md flex flex-col gap-6">
+<!-- Progress Indicator (Optional/Contextual) -->
+<div class="flex gap-2 w-full mb-2">
+<div class="h-2 flex-1 bg-primary rounded-full"></div>
+<div class="h-2 flex-1 bg-primary rounded-full"></div>
+<div class="h-2 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-2 flex-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Header Section -->
+<div class="text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-2">Help us understand better</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">సరిగా అర్థం చేసుకోవడానికి మాకు సహాయపడండి</p>
+</div>
+<!-- Question Card -->
+<div class="bg-surface-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-primary mb-1">How does the feed smell?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">దాణా వాసన ఎలా ఉంది?</p>
+<!-- Options -->
+<div class="flex flex-col gap-4">
+<!-- Option 1 -->
+<button class="option-card flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-xl h-large-btn transition-all duration-200 text-left" onclick="selectOption(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="grass" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grass</span>
+</div>
+<div>
+<span class="block font-label-lg text-label-lg text-on-surface">Normal / Fresh</span>
+<span class="block font-body-sm text-on-surface-variant">సాధారణం / తాజా</span>
+</div>
+</div>
+<span class="check-icon material-symbols-outlined text-primary opacity-0 transition-opacity" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Option 2 -->
+<button class="option-card flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-xl h-large-btn transition-all duration-200 text-left" onclick="selectOption(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-3xl" data-icon="sentiment_dissatisfied" data-weight="fill" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+</div>
+<div>
+<span class="block font-label-lg text-label-lg text-on-surface">Sour / Bad Smell</span>
+<span class="block font-body-sm text-on-surface-variant">పుల్లటి / చెడు వాసన</span>
+</div>
+</div>
+<span class="check-icon material-symbols-outlined text-primary opacity-0 transition-opacity" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Option 3 -->
+<button class="option-card flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-xl h-large-btn transition-all duration-200 text-left" onclick="selectOption(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="water_drop" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<span class="block font-label-lg text-label-lg text-on-surface">Musty / Damp</span>
+<span class="block font-body-sm text-on-surface-variant">బూజు పట్టిన / తడిగా</span>
+</div>
+</div>
+<span class="check-icon material-symbols-outlined text-primary opacity-0 transition-opacity" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-4 mt-4">
+<button class="flex-1 border-2 border-primary text-primary font-label-lg text-label-lg rounded-xl h-[56px] flex items-center justify-center hover:bg-surface-container-low transition-colors">
+                    Back (వెనుకకు)
+                </button>
+<button class="flex-1 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl h-[56px] flex items-center justify-center hover:bg-primary-container transition-colors opacity-50 cursor-not-allowed" id="nextBtn">
+                    Next (తదుపరి)
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-sm text-label-sm mt-1">Check Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        function selectOption(clickedElement) {
+            // Remove 'selected' class from all options
+            const options = document.querySelectorAll('.option-card');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+                opt.classList.remove('border-primary');
+                opt.classList.add('border-outline-variant');
+            });
+
+            // Add 'selected' class to clicked option
+            clickedElement.classList.add('selected');
+            clickedElement.classList.remove('border-outline-variant');
+            
+            // Enable Next button
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            
+            // Provide slight haptic feedback if available (for mobile)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+    </script>
+</body></html>

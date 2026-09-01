@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cooperative Dashboard - FeedCheck</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#3b6934",
+                      "tertiary-fixed": "#e4e4cc",
+                      "surface-dim": "#dcd9d9",
+                      "secondary": "#006e1c",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#91f78e",
+                      "surface-container-high": "#eae7e7",
+                      "tertiary-fixed-dim": "#c8c8b0",
+                      "surface-container-highest": "#e5e2e1",
+                      "primary-fixed": "#bcf0ae",
+                      "tertiary": "#393a29",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#002201",
+                      "outline-variant": "#c2c9bb",
+                      "surface": "#fcf9f8",
+                      "outline": "#72796e",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#002204",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-on-surface": "#f3f0ef",
+                      "primary": "#154212",
+                      "inverse-surface": "#313030",
+                      "primary-fixed-dim": "#a1d494",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1b1b1b",
+                      "secondary-fixed-dim": "#78dc77",
+                      "on-tertiary-fixed-variant": "#474836",
+                      "on-secondary-fixed-variant": "#005313",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-variant": "#e5e2e1",
+                      "on-surface-variant": "#42493e",
+                      "secondary-fixed": "#94f990",
+                      "on-primary-container": "#9dd090",
+                      "primary-container": "#2d5a27",
+                      "inverse-primary": "#a1d494",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#50513f",
+                      "background": "#fcf9f8",
+                      "surface-container": "#f0eded",
+                      "on-tertiary-fixed": "#1b1d0e",
+                      "on-tertiary-container": "#c3c4ac",
+                      "on-background": "#1b1b1b",
+                      "on-primary-fixed-variant": "#23501e",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#00731e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "touch-target-min": "56px",
+                      "gutter-md": "16px",
+                      "unit": "8px",
+                      "container-padding-desktop": "32px",
+                      "stack-gap": "12px",
+                      "container-padding-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg-mobile": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.1px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5DC; /* Sand */
+            color: #1b1b1b;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0CC;
+            border-radius: 8px;
+        }
+        .card-elevation {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-background h-screen flex overflow-hidden">
+<!-- NavigationDrawer -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container dark:bg-surface-container-high docked left-0 h-full w-64 border-r border-outline-variant dark:border-outline flat no shadows">
+<div class="p-container-padding-desktop border-b border-outline-variant dark:border-outline">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Cooperative Admin</h2>
+</div>
+<ul class="flex flex-col py-4 gap-2">
+<li>
+<a class="flex items-center gap-3 text-primary dark:text-primary-fixed font-bold border-r-4 border-primary dark:border-primary-fixed py-3 px-6 opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-lg text-label-lg">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg">Farmers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-lg text-label-lg">Alerts</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 overflow-y-auto bg-[#F5F5DC]">
+<!-- TopAppBar Context (Optional desktop header for language/profile) -->
+<header class="bg-surface border-b border-outline-variant px-container-padding-desktop py-4 flex justify-between items-center sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="agriculture">agriculture</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">FeedCheck Overview</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="font-label-lg text-label-lg font-bold text-primary hover:bg-surface-container px-4 py-2 rounded-lg transition-colors border border-outline-variant">EN/TEL</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<div class="p-container-padding-desktop max-w-[1200px] mx-auto space-y-8">
+<!-- Key Metrics Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="card card-elevation p-6 flex flex-col justify-between h-[140px] hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-surface-variant">Total Farmers</h3>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-full" data-icon="group">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">1,240</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span> 2.4%</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="card card-elevation p-6 flex flex-col justify-between h-[140px] hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-surface-variant">Samples Tested</h3>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-full" data-icon="science">science</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">5,800</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span> 5.1%</span>
+</div>
+</div>
+<!-- Card 3 (Critical) -->
+<div class="card card-elevation p-6 flex flex-col justify-between h-[140px] border-error container hover:border-error transition-colors cursor-pointer bg-error-container/20">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-error-container">High-Risk Alerts</h3>
+<span class="material-symbols-outlined text-error bg-error-container p-2 rounded-full" data-icon="warning">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-error">12</span>
+<span class="font-label-sm text-label-sm text-error flex items-center">Action Required</span>
+</div>
+</div>
+</section>
+<!-- Main Data Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Risk Map (Takes up 2 columns) -->
+<div class="card card-elevation lg:col-span-2 p-6 flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Regional Risk Map</h3>
+<button class="font-label-lg text-label-lg text-primary hover:underline flex items-center gap-1">View Full Map <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+<div class="w-full h-[400px] bg-surface-container rounded-lg overflow-hidden relative border border-outline-variant">
+<!-- Placeholder for Map -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A highly detailed top-down digital map view of a rural agricultural region. The map should follow a clean, modern aesthetic with a light mode color palette consisting of sandy beiges, light greens, and soft whites. Several stylized map pins or markers should be visible, colored in vibrant green for safe zones and stark red for alert zones to denote risk levels. The styling should look professional, crisp, and suitable for a high-end data dashboard, avoiding realistic satellite imagery in favor of a clean vector-like data visualization style." data-location="Andhra Pradesh" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7gGL2jnYy9dY2BPuV4aZqyAj6ZyOVG3_v8_C6Z17OgOzjB-SYPcjKfF0tkwnuTbF8pCiTkUlnGZJAAF55c0QYTQwWtghvlbJLYizG5Y8s6K4g9lMtbnz3BSEHHWKOQwoSQNf5eD-tH6XyeT5SnKDA1DkQCaf0EliFqUCppbP6dGwA9AMPNTCFuDZj43UYHliD95W6JQhiknyj_q94xxt5H-0EqSN9u8tfr2fLDaYtj4rOimyPDrXe')"></div>
+<!-- Overlay elements for UI realism -->
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-sm p-2 rounded-lg border border-outline-variant flex flex-col gap-2">
+<div class="flex items-center gap-2 font-label-sm text-label-sm"><span class="w-3 h-3 rounded-full bg-secondary"></span> Safe</div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm"><span class="w-3 h-3 rounded-full bg-[#FFA500]"></span> Warning</div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm"><span class="w-3 h-3 rounded-full bg-error"></span> High Risk</div>
+</div>
+</div>
+</div>
+<!-- Early Warning Alert List -->
+<div class="card card-elevation lg:col-span-1 p-0 flex flex-col">
+<div class="p-6 border-b border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-error flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+                            Recent Alerts
+                        </h3>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[400px] p-4 flex flex-col gap-3">
+<!-- Alert Item 1 -->
+<div class="p-4 rounded-lg border border-error-container bg-error-container/10 flex flex-col gap-2 hover:bg-error-container/20 transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Ramesh Kumar</span>
+<span class="font-label-sm text-label-sm bg-error text-on-error px-2 py-1 rounded-full">Aflatoxin</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                Village Palem
+                            </div>
+<div class="text-xs text-outline mt-1 text-right">2 hrs ago</div>
+</div>
+<!-- Alert Item 2 -->
+<div class="p-4 rounded-lg border border-error-container bg-error-container/10 flex flex-col gap-2 hover:bg-error-container/20 transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Srinivas Rao</span>
+<span class="font-label-sm text-label-sm bg-[#FFA500] text-white px-2 py-1 rounded-full">Moisture</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                Kodur
+                            </div>
+<div class="text-xs text-outline mt-1 text-right">5 hrs ago</div>
+</div>
+<!-- Alert Item 3 -->
+<div class="p-4 rounded-lg border border-error-container bg-error-container/10 flex flex-col gap-2 hover:bg-error-container/20 transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Lakshmi Devi</span>
+<span class="font-label-sm text-label-sm bg-error text-on-error px-2 py-1 rounded-full">Aflatoxin</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                Village Palem
+                            </div>
+<div class="text-xs text-outline mt-1 text-right">1 day ago</div>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-container-low rounded-b-lg">
+<button class="w-full text-center font-label-lg text-label-lg text-primary hover:underline">View All Alerts</button>
+</div>
+</div>
+</section>
+<!-- Quality Trend Chart -->
+<section class="card card-elevation p-6 mb-8">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Quality Trend (30 Days)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Average compliance rate across all tested samples.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded border border-outline-variant font-label-sm text-label-sm bg-surface hover:bg-surface-container transition-colors">Weekly</button>
+<button class="px-3 py-1 rounded border border-primary font-label-sm text-label-sm bg-primary-container text-on-primary-container font-bold">Monthly</button>
+</div>
+</div>
+<div class="w-full h-[300px] flex items-end gap-2 pt-10 border-b border-l border-outline-variant relative px-4 pb-2">
+<!-- Y Axis Labels -->
+<div class="absolute left-[-30px] top-0 bottom-0 flex flex-col justify-between font-label-sm text-label-sm text-outline py-2">
+<span>100%</span>
+<span>75%</span>
+<span>50%</span>
+<span>25%</span>
+<span>0%</span>
+</div>
+<!-- Chart Bars (Stylized as a line chart approximation with bars for simplicity in HTML/CSS) -->
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm hover:bg-primary/40 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">60%</div></div>
+<div class="flex-1 bg-primary/30 h-[65%] rounded-t-sm hover:bg-primary/50 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">65%</div></div>
+<div class="flex-1 bg-primary/40 h-[72%] rounded-t-sm hover:bg-primary/60 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">72%</div></div>
+<div class="flex-1 bg-primary/30 h-[68%] rounded-t-sm hover:bg-primary/50 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">68%</div></div>
+<div class="flex-1 bg-primary/50 h-[80%] rounded-t-sm hover:bg-primary/70 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">80%</div></div>
+<div class="flex-1 bg-[#FFA500]/60 h-[45%] rounded-t-sm hover:bg-[#FFA500]/80 transition-colors relative group border-t-2 border-[#FFA500]"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">45%</div></div>
+<div class="flex-1 bg-primary/60 h-[85%] rounded-t-sm hover:bg-primary/80 transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">85%</div></div>
+<div class="flex-1 bg-primary/70 h-[92%] rounded-t-sm hover:bg-primary transition-colors relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm px-2 py-1 rounded text-xs">92%</div></div>
+<!-- X Axis Labels -->
+<div class="absolute -bottom-8 left-0 right-0 flex justify-between px-4 font-label-sm text-label-sm text-outline">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

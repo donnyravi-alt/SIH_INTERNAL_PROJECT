@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FeedCheck - Photo Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#3b6934",
+                      "tertiary-fixed": "#e4e4cc",
+                      "surface-dim": "#dcd9d9",
+                      "secondary": "#006e1c",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#91f78e",
+                      "surface-container-high": "#eae7e7",
+                      "tertiary-fixed-dim": "#c8c8b0",
+                      "surface-container-highest": "#e5e2e1",
+                      "primary-fixed": "#bcf0ae",
+                      "tertiary": "#393a29",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#002201",
+                      "outline-variant": "#c2c9bb",
+                      "surface": "#fcf9f8",
+                      "outline": "#72796e",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#002204",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-on-surface": "#f3f0ef",
+                      "primary": "#154212",
+                      "inverse-surface": "#313030",
+                      "primary-fixed-dim": "#a1d494",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1b1b1b",
+                      "secondary-fixed-dim": "#78dc77",
+                      "on-tertiary-fixed-variant": "#474836",
+                      "on-secondary-fixed-variant": "#005313",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-variant": "#e5e2e1",
+                      "on-surface-variant": "#42493e",
+                      "secondary-fixed": "#94f990",
+                      "on-primary-container": "#9dd090",
+                      "primary-container": "#2d5a27",
+                      "inverse-primary": "#a1d494",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#50513f",
+                      "background": "#fcf9f8",
+                      "surface-container": "#f0eded",
+                      "on-tertiary-fixed": "#1b1d0e",
+                      "on-tertiary-container": "#c3c4ac",
+                      "on-background": "#1b1b1b",
+                      "on-primary-fixed-variant": "#23501e",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#00731e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "touch-target-min": "56px",
+                      "gutter-md": "16px",
+                      "unit": "8px",
+                      "container-padding-desktop": "32px",
+                      "stack-gap": "12px",
+                      "container-padding-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg-mobile": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .pulse-overlay {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        .progress-bar-fill {
+            transition: width 0.5s ease-in-out;
+        }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pt-[56px] pb-[72px] md:pb-0 md:pl-64">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-touch-target-min md:w-[calc(100%-16rem)] md:left-64">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="agriculture">agriculture</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">FeedCheck</h1>
+</div>
+<button class="font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container px-3 py-2 rounded-lg transition-colors min-h-[48px] flex items-center justify-center">
+            EN/TEL
+        </button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="bg-surface-container border-r border-outline-variant hidden md:flex flex-col fixed left-0 top-0 h-full w-64 z-40">
+<div class="p-6">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Cooperative Admin</h2>
+</div>
+<ul class="flex flex-col flex-1 py-4">
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors min-h-[48px]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors min-h-[48px]" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-lg text-label-lg">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors min-h-[48px]" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg">Farmers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors min-h-[48px]" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-lg text-label-lg">Alerts</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="p-container-padding-mobile md:p-container-padding-desktop max-w-3xl mx-auto space-y-8">
+<div class="space-y-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-on-surface">Analyzing Feed Sample</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Please wait while the AI processes your image.</p>
+</div>
+<!-- Image Analysis Container -->
+<div class="relative bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm aspect-video max-h-[400px]">
+<div class="absolute inset-0 pulse-overlay border-4 border-secondary-container rounded-xl z-10 pointer-events-none"></div>
+<img class="w-full h-full object-cover" data-alt="A close-up, high-definition photograph of a handful of dry cattle feed mix (grains, corn, pellets) resting on a rough wooden surface. Bright, natural outdoor sunlight illuminates the texture. A subtle, glowing green digital grid overlay hints at scanning or analysis technology, maintaining a professional agricultural aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiO7tTh4_MhKEZm54wCfMjiXn0ypKLPYYvbgfFRVX0tZM_XnMKVJawNW7epWqVeFnrDpxPbLGouCsjwICH-iqBCxZ9JcoymDk7mojS1fAnEXbkOQMB4yYi4UjGYMzenmlaOoxrmPNaHggCRGwxmw9ePaZHwuIwcpmfDMTZ8c6QnDft96WF6_BMkhYGvCQSZgIENk9U-NBZwnPeGZLxJaC8xFrCtRy24k0XDbuUJVUX7W3E7RZNw1kC"/>
+<div class="absolute bottom-4 right-4 bg-surface/90 backdrop-blur-sm rounded-lg px-4 py-2 border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined spin text-primary" data-icon="sync">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Scanning...</span>
+</div>
+</div>
+<!-- Progress Checklist -->
+<div class="bg-white rounded-xl border border-outline-variant p-6 space-y-6 shadow-sm">
+<!-- Item 1: Complete -->
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0">
+<span class="material-symbols-outlined text-secondary-container text-2xl font-bold" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Detecting Cattle Feed</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">100%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary-container h-2 rounded-full progress-bar-fill" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Item 2: In Progress -->
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0">
+<span class="material-symbols-outlined spin text-primary text-2xl" data-icon="progress_activity">progress_activity</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Searching for Foreign Particles</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">45%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full progress-bar-fill" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<!-- Item 3: Pending -->
+<div class="flex items-start gap-4 opacity-50">
+<div class="mt-1 flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Checking for Mould Indicators</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">0%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<!-- Item 4: Pending -->
+<div class="flex items-start gap-4 opacity-50">
+<div class="mt-1 flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Analyzing Texture</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">0%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+<button class="min-h-[56px] px-8 py-3 bg-surface border-2 border-primary rounded-xl text-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors w-full md:w-auto">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+                 Cancel Analysis
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface border-t border-outline-variant fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low min-h-[56px]" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:bg-surface-container-low min-h-[56px] scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-sm text-label-sm mt-1 font-bold">Check Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low min-h-[56px]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low min-h-[56px]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple simulation of progress for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const inProgressBar = document.querySelectorAll('.progress-bar-fill')[1];
+                const inProgressText = document.querySelectorAll('.font-label-sm.text-primary')[0];
+                let width = 45;
+                const interval = setInterval(() => {
+                    if (width >= 80) {
+                        clearInterval(interval);
+                    } else {
+                        width += 5;
+                        inProgressBar.style.width = width + '%';
+                        inProgressText.innerText = width + '%';
+                    }
+                }, 800);
+            }, 1000);
+        });
+    </script>
+</body></html>

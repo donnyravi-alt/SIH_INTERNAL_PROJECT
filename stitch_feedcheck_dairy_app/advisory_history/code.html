@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FeedCheck - Advisory &amp; History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#3b6934",
+                        "tertiary-fixed": "#e4e4cc",
+                        "surface-dim": "#dcd9d9",
+                        "secondary": "#006e1c",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#91f78e",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#c8c8b0",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#bcf0ae",
+                        "tertiary": "#393a29",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "outline-variant": "#c2c9bb",
+                        "surface": "#fcf9f8",
+                        "outline": "#72796e",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002204",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "primary": "#154212",
+                        "inverse-surface": "#313030",
+                        "primary-fixed-dim": "#a1d494",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1b",
+                        "secondary-fixed-dim": "#78dc77",
+                        "on-tertiary-fixed-variant": "#474836",
+                        "on-secondary-fixed-variant": "#005313",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e5e2e1",
+                        "on-surface-variant": "#42493e",
+                        "secondary-fixed": "#94f990",
+                        "on-primary-container": "#9dd090",
+                        "primary-container": "#2d5a27",
+                        "inverse-primary": "#a1d494",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#50513f",
+                        "background": "#fcf9f8",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-fixed": "#1b1d0e",
+                        "on-tertiary-container": "#c3c4ac",
+                        "on-background": "#1b1b1b",
+                        "on-primary-fixed-variant": "#23501e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#00731e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "touch-target-min": "56px",
+                        "gutter-md": "16px",
+                        "unit": "8px",
+                        "container-padding-desktop": "32px",
+                        "stack-gap": "12px",
+                        "container-padding-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg-mobile": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5DC] text-on-background min-h-screen pb-[80px]">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="agriculture">agriculture</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">FeedCheck</span>
+</div>
+<button class="font-label-lg text-label-lg text-primary font-bold px-4 h-touch-target-min flex items-center justify-center border-2 border-primary rounded-full hover:bg-surface-container transition-colors">
+            EN/TEL
+        </button>
+</header>
+<!-- Main Content -->
+<main class="pt-[80px] px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container dark:bg-surface-container-high w-64 border-r border-outline-variant dark:border-outline pt-[80px]">
+<div class="px-6 py-4 border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Cooperative Admin</h2>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-primary dark:text-primary-fixed font-bold border-r-4 border-primary dark:border-primary-fixed py-3 px-6 bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined filled" data-icon="assessment">assessment</span>
+<span class="font-label-lg text-label-lg">Reports</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg">Farmers</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-6 hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-lg text-label-lg">Alerts</span>
+</a>
+</nav>
+</aside>
+<!-- Content Area -->
+<div class="w-full md:ml-64 flex flex-col gap-[32px] pb-[80px]">
+<!-- Advisory Section -->
+<section class="bg-white rounded-xl border border-[#E0E0CC] p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Nutrition Advisory</h2>
+<button aria-label="Listen to advisory" class="bg-secondary-container text-on-secondary-container w-12 h-12 rounded-full flex items-center justify-center shadow-sm hover:scale-105 transition-transform">
+<span class="material-symbols-outlined filled" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+<div class="font-body-lg-mobile text-body-lg-mobile text-on-surface space-y-4 mb-8">
+<p>
+                        Current feed mix lacks sufficient protein for high-yield dairy cows. 
+                        We recommend increasing the alfalfa ratio by 15% to maintain milk production levels.
+                    </p>
+<p class="font-medium text-[#ba1a1a]">
+                        Alert: Trace minerals are below the recommended threshold. Immediate supplementation required.
+                    </p>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary h-touch-target-min px-8 rounded-full font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+                    Request Lab Test
+                </button>
+</section>
+<!-- History Section -->
+<section class="flex flex-col gap-stack-gap">
+<h2 class="font-headline-md text-headline-md text-primary px-2">Recent Tests</h2>
+<!-- History Item 1 -->
+<div class="bg-white rounded-xl border border-[#E0E0CC] p-4 flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Silage Batch A</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Oct 12, 2023</span>
+</div>
+<div class="flex items-center gap-2 bg-[#bcf0ae] text-[#002201] px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm">Optimal</span>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="bg-white rounded-xl border border-[#E0E0CC] p-4 flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Dry Fodder Mix</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Oct 05, 2023</span>
+</div>
+<div class="flex items-center gap-2 bg-[#ffdad6] text-[#93000a] px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+<span class="font-label-sm text-label-sm">Deficient</span>
+</div>
+</div>
+<!-- History Item 3 -->
+<div class="bg-white rounded-xl border border-[#E0E0CC] p-4 flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Concentrate Blend</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Sep 28, 2023</span>
+</div>
+<div class="flex items-center gap-2 bg-[#f0eded] text-[#1b1b1b] px-3 py-1 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="pending">pending</span>
+<span class="font-label-sm text-label-sm">Pending</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-surface dark:bg-surface-dim docked full-width bottom-0 border-t border-outline-variant dark:border-outline fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-sm text-label-sm mt-1">Check Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined filled" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

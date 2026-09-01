@@ -1,0 +1,8 @@
+{
+  "name": "Remix FeedCheck",
+  "description": "Feed quality \u0026 cattle nutrition assessment application for dairy farmers and cooperatives",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

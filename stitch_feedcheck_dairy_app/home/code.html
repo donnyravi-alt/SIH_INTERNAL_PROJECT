@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FeedCheck - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-tint": "#3b6934",
+                            "tertiary-fixed": "#e4e4cc",
+                            "surface-dim": "#dcd9d9",
+                            "secondary": "#006e1c",
+                            "error-container": "#ffdad6",
+                            "secondary-container": "#91f78e",
+                            "surface-container-high": "#eae7e7",
+                            "tertiary-fixed-dim": "#c8c8b0",
+                            "surface-container-highest": "#e5e2e1",
+                            "primary-fixed": "#bcf0ae",
+                            "tertiary": "#393a29",
+                            "on-tertiary": "#ffffff",
+                            "on-primary-fixed": "#002201",
+                            "outline-variant": "#c2c9bb",
+                            "surface": "#fcf9f8",
+                            "outline": "#72796e",
+                            "on-error": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            "on-secondary-fixed": "#002204",
+                            "on-primary": "#ffffff",
+                            "surface-bright": "#fcf9f8",
+                            "inverse-on-surface": "#f3f0ef",
+                            "primary": "#154212",
+                            "inverse-surface": "#313030",
+                            "primary-fixed-dim": "#a1d494",
+                            "on-error-container": "#93000a",
+                            "on-surface": "#1b1b1b",
+                            "secondary-fixed-dim": "#78dc77",
+                            "on-tertiary-fixed-variant": "#474836",
+                            "on-secondary-fixed-variant": "#005313",
+                            "surface-container-low": "#f6f3f2",
+                            "surface-variant": "#e5e2e1",
+                            "on-surface-variant": "#42493e",
+                            "secondary-fixed": "#94f990",
+                            "on-primary-container": "#9dd090",
+                            "primary-container": "#2d5a27",
+                            "inverse-primary": "#a1d494",
+                            "error": "#ba1a1a",
+                            "tertiary-container": "#50513f",
+                            "background": "#fcf9f8",
+                            "surface-container": "#f0eded",
+                            "on-tertiary-fixed": "#1b1d0e",
+                            "on-tertiary-container": "#c3c4ac",
+                            "on-background": "#1b1b1b",
+                            "on-primary-fixed-variant": "#23501e",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-container": "#00731e"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "touch-target-min": "56px",
+                            "gutter-md": "16px",
+                            "unit": "8px",
+                            "container-padding-desktop": "32px",
+                            "stack-gap": "12px",
+                            "container-padding-mobile": "16px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["Inter"],
+                            "body-md": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "body-lg-mobile": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5DC;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-on-background bg-[#F5F5DC] min-h-screen pb-24 font-body-md text-[16px] leading-[24px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-touch-target-min bg-surface text-primary border-b border-outline-variant flat no shadows md:hidden">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[24px]" data-icon="agriculture">agriculture</span>
+<span class="font-headline-lg-mobile text-[22px] leading-[28px] font-bold text-primary">FeedCheck</span>
+</div>
+<button class="font-label-lg text-[14px] leading-[20px] font-semibold text-primary px-3 py-1 border border-outline-variant rounded hover:bg-surface-container transition-colors">
+            EN/TEL
+        </button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container w-64 border-r border-outline-variant">
+<div class="px-6 py-4 border-b border-outline-variant flex items-center gap-3">
+<span class="material-symbols-outlined text-[28px] text-primary" data-icon="agriculture">agriculture</span>
+<span class="font-headline-md text-[20px] leading-[28px] font-bold text-primary">FeedCheck</span>
+</div>
+<div class="px-6 py-3 border-b border-outline-variant">
+<span class="font-headline-md text-[20px] leading-[28px] text-primary font-bold">Cooperative Admin</span>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-primary font-bold border-r-4 border-primary py-3 px-6 bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-[14px] leading-[20px] font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-lg text-[14px] leading-[20px] font-semibold">Reports</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-[14px] leading-[20px] font-semibold">Farmers</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-6 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-lg text-[14px] leading-[20px] font-semibold">Alerts</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-[72px] md:pt-8 md:pl-72 px-gutter-md md:px-container-padding-desktop max-w-[1200px] mx-auto flex flex-col gap-stack-gap md:gap-[24px]">
+<!-- Welcome & Logo Section -->
+<section class="flex flex-col items-center py-6">
+<img alt="FeedCheck Logo" class="w-32 h-32 rounded-lg object-contain bg-surface mb-4 border border-outline-variant shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqbpaiUXPe-lJoi5VW-499yINpfTwdj1dBNnHHqvGUfxADCIYNXaPNdMZx7VzrM2FY4NShi-irVOMHMVd1qeRYtLkW-O9e_w_p78JuyT3VFJnPXf1wjeYuveSVJs17iRHfwJKB81ArvwplIISk-GWbrbgQePee7m3dXpI1ZAMbUF-f6PsOaW-kF2owCLmBpHGKgrDUS3A13Be07jlra5vngC0QASEf_UyhaGTgF2duCyJiwA2XQ2Pe"/>
+<h1 class="font-display-lg text-[32px] leading-[40px] font-bold text-on-background text-center">Welcome back, Farmer</h1>
+<p class="font-body-lg-mobile text-[18px] leading-[28px] text-on-surface-variant text-center mt-2">Ready for today's quality checks?</p>
+</section>
+<!-- Recent Summary Section -->
+<section class="bg-surface border border-[#E0E0CC] rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h2 class="font-label-lg text-[14px] leading-[20px] font-semibold text-on-surface">Last Check: 2 hours ago</h2>
+<p class="font-body-md text-[16px] leading-[24px] text-on-surface-variant">Status: High Quality</p>
+</div>
+</div>
+<button class="font-label-sm text-[12px] leading-[16px] font-medium text-primary underline">View Details</button>
+</section>
+<!-- Main Actions Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Check Cattle Feed (Primary) -->
+<button class="bg-primary text-on-primary rounded-xl p-6 min-h-[120px] flex flex-col items-start justify-between border border-primary transition-all active:scale-[0.98] focus:ring-2 focus:ring-primary-fixed focus:outline-none">
+<span class="material-symbols-outlined text-[40px] mb-4" data-icon="biotech" data-weight="fill" style="font-variation-settings: 'FILL' 1;">biotech</span>
+<div class="text-left">
+<h3 class="font-headline-lg-mobile text-[22px] leading-[28px] font-bold">Check Cattle Feed</h3>
+<p class="font-body-md text-[16px] leading-[24px] opacity-90 mt-1">Start new quality test</p>
+</div>
+</button>
+<!-- Water Settling Test (Secondary) -->
+<button class="bg-surface text-on-surface rounded-xl p-6 min-h-[120px] flex flex-col items-start justify-between border border-[#E0E0CC] transition-all hover:border-primary active:bg-surface-variant active:scale-[0.98] focus:ring-2 focus:ring-primary focus:outline-none">
+<span class="material-symbols-outlined text-[40px] text-primary mb-4" data-icon="water_drop" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<div class="text-left">
+<h3 class="font-headline-lg-mobile text-[22px] leading-[28px] font-bold text-primary">Water Settling Test</h3>
+<p class="font-body-md text-[16px] leading-[24px] text-on-surface-variant mt-1">Verify water purity</p>
+</div>
+</button>
+<!-- My Test History -->
+<button class="bg-surface text-on-surface rounded-xl p-6 min-h-[100px] flex items-center gap-4 border border-[#E0E0CC] transition-all hover:border-primary active:bg-surface-variant active:scale-[0.98] focus:ring-2 focus:ring-primary focus:outline-none">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px] text-primary" data-icon="history">history</span>
+</div>
+<div class="text-left">
+<h3 class="font-headline-md text-[20px] leading-[28px] font-bold text-on-surface">My Test History</h3>
+<p class="font-body-md text-[16px] leading-[24px] text-on-surface-variant">View past results</p>
+</div>
+</button>
+<!-- Farm Profile -->
+<button class="bg-surface text-on-surface rounded-xl p-6 min-h-[100px] flex items-center gap-4 border border-[#E0E0CC] transition-all hover:border-primary active:bg-surface-variant active:scale-[0.98] focus:ring-2 focus:ring-primary focus:outline-none">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px] text-primary" data-icon="storefront">storefront</span>
+</div>
+<div class="text-left">
+<h3 class="font-headline-md text-[20px] leading-[28px] font-bold text-on-surface">Farm Profile</h3>
+<p class="font-body-md text-[16px] leading-[24px] text-on-surface-variant">Manage cattle &amp; details</p>
+</div>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface text-primary border-t border-outline-variant flat no shadows md:hidden">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[12px] leading-[16px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-sm text-[12px] leading-[16px] font-medium mt-1">Check Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-[12px] leading-[16px] font-medium mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[12px] leading-[16px] font-medium mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
